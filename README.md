@@ -384,9 +384,6 @@ For questions about this submission:
 ## 🎓 Academic Integrity
 
 This project represents original work completed for the BYOP (Build Your Own Project) assignment. All external libraries and APIs are properly attributed and used in accordance with their licenses.
-
-**Grade Expectation: 95-98/100 (A+)**
-
 ---
 
 **End of Submission Documentation**
