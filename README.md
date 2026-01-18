@@ -3,6 +3,7 @@
 **Project Name:** LoL Multi-Agent Coach  
 **Date:** January 17, 2026  
 **Author:** Ralitza Mondal  
+** huggign face: ** link: https://huggingface.co/spaces/Ralitza1/LolMultiAgent
 
 
 ---
