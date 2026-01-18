@@ -3,7 +3,7 @@
 **Project Name:** LoL Multi-Agent Coach  
 **Date:** January 17, 2026  
 **Author:** Ralitza Mondal  
-**Grade Target:** 95-98/100 (A+)
+
 
 ---
 
