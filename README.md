@@ -123,8 +123,6 @@ lol-coach-agent/
 - ✅ **Real-time Meta Data**: Tavily integration for current meta
 - ✅ **Personalization**: Analyzes summoner history for custom advice
 
-**Current Score: 95/100 (A+)**  
-**Potential Score: 98/100 with visualizations**
 
 ---
 
