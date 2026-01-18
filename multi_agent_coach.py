@@ -12,9 +12,8 @@ from langchain.tools import tool
 from langchain_community.vectorstores import FAISS
 from tavily import TavilyClient
 
-# Import API clients and data fetchers
+# Import API clients
 from riot_api import RiotAPI
-from data_fetchers import get_optimal_build_ugg, get_champion_stats
 from youtube_scraper import YouTubeScraper
 
 # Import multi-agent components
