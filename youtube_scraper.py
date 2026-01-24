@@ -20,14 +20,23 @@ class YouTubeScraper:
     
     def __init__(self):
         self.session = requests.Session()
+        # Updated headers to bypass YouTube's bot detection (Jan 2026)
         self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
             'Accept-Language': 'en-US,en;q=0.9',
             'Accept-Encoding': 'gzip, deflate, br',
             'DNT': '1',
             'Connection': 'keep-alive',
-            'Upgrade-Insecure-Requests': '1'
+            'Upgrade-Insecure-Requests': '1',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'none',
+            'Sec-Fetch-User': '?1',
+            'sec-ch-ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"macOS"',
+            'Cache-Control': 'max-age=0'
         })
     
     def search_videos(self, query: str, max_results: int = 5) -> List[Dict]:
@@ -48,8 +57,21 @@ class YouTubeScraper:
             
             print(f"🔍 Scraping YouTube search: {query}")
             
+            # Add small delay to avoid rate limiting
+            import time
+            time.sleep(1)
+            
             response = self.session.get(url, timeout=15)
             response.raise_for_status()
+            
+            # Check if we got blocked
+            if 'captcha' in response.text.lower() or 'unusual traffic' in response.text.lower():
+                print("⚠️  YouTube detected automation - trying with cookies...")
+                # Add some cookies to look more like a real browser
+                self.session.cookies.set('CONSENT', 'YES+cb', domain='.youtube.com')
+                self.session.cookies.set('PREF', 'tz=America.New_York', domain='.youtube.com')
+                time.sleep(2)
+                response = self.session.get(url, timeout=15)
             
             # Parse HTML
             soup = BeautifulSoup(response.content, 'html.parser')

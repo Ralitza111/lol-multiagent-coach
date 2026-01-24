@@ -14,7 +14,14 @@ from tavily import TavilyClient
 
 # Import API clients
 from riot_api import RiotAPI
-from youtube_scraper import YouTubeScraper
+try:
+    # Try YouTube Data API first (more reliable)
+    from youtube_api import YouTubeAPIClient as YouTubeScraper
+    print("✅ Using YouTube Data API")
+except Exception as e:
+    # Fallback to web scraper
+    from youtube_scraper import YouTubeScraper
+    print(f"⚠️  Using web scraper (API import failed: {e})")
 
 # Import multi-agent components
 from multi_agent_router import create_router, QueryRouter
@@ -1265,7 +1272,7 @@ def create_gradio_interface(coach: MultiAgentLoLCoach):
     return demo
 
 
-# Example usage
+# Example usage for local development
 if __name__ == "__main__":
     import sys
     
