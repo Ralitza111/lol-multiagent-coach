@@ -3,6 +3,7 @@
 **Project Name:** LoL Multi-Agent Coach  
 **Date:** January 17, 2026  
 **Author:** Ralitza Mondal  
+** hugging face: ** link: https://huggingface.co/spaces/Ralitza1/LolMultiAgent
 
 
 ---
@@ -123,8 +124,6 @@ lol-coach-agent/
 - ✅ **Real-time Meta Data**: Tavily integration for current meta
 - ✅ **Personalization**: Analyzes summoner history for custom advice
 
-**Current Score: 95/100 (A+)**  
-**Potential Score: 98/100 with visualizations**
 
 ---
 
